@@ -45,7 +45,7 @@ class IncomeExpence extends StatelessWidget {
                   ),
             ),
             SizedBox(
-              height: 3,
+              height: 3.h,
             ),
             Text('$symbol ${amount.toStringAsFixed(2)}')
           ],

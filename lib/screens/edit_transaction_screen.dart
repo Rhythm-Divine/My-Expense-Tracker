@@ -85,11 +85,11 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                         await DatabaseProvider.deleteTransaction(widget.tm.id!);
                         Get.back();
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.delete,
                         color: pinkClr,
                       ),
-                      label: Text(
+                      label: const Text(
                         'Delete transaction',
                         style: TextStyle(
                           color: pinkClr,
@@ -113,6 +113,7 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                 hint: 'Enter transaction amount',
                 label: 'Transaction Amount',
                 controller: _amountController,
+                isAmount: true,
               ),
               Row(
                 children: [
@@ -120,11 +121,11 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                     child: InputField(
                       hint: _addTransactionController.selectedDate.isNotEmpty
                           ? _addTransactionController.selectedDate
-                          : _selectedTime!,
+                          : _selectedDate!,
                       label: 'Date',
                       widget: IconButton(
                         onPressed: () => _getDateFromUser(context),
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.calendar_month_outlined,
                           color: Colors.grey,
                         ),
@@ -142,7 +143,7 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                       label: 'Time',
                       widget: IconButton(
                         onPressed: () => _getTimeFromUser(context),
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.access_time_rounded,
                           color: Colors.grey,
                         ),
@@ -158,7 +159,7 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                 label: 'Category',
                 widget: IconButton(
                     onPressed: () => _showDialog(context, true),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.keyboard_arrow_down_sharp,
                     )),
               ),
@@ -170,7 +171,7 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                 label: 'Mode',
                 widget: IconButton(
                     onPressed: () => _showDialog(context, false),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.keyboard_arrow_down_sharp,
                     )),
               ),
@@ -180,7 +181,7 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: primaryColor,
           onPressed: () => _updateTransaction(),
-          child: Icon(
+          child: const Icon(
             Icons.add,
           ),
         ),
@@ -233,7 +234,7 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
         'Required',
         'All fields are requried',
         backgroundColor:
-            Get.isDarkMode ? Color(0xFF212121) : Colors.grey.shade100,
+            Get.isDarkMode ? const Color(0xFF212121) : Colors.grey.shade100,
         colorText: pinkClr,
       );
     } else {
@@ -281,9 +282,9 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                     }
                   },
                   child: Row(children: [
-                    Icon(Icons.image),
+                    const Icon(Icons.image),
                     Padding(
-                      padding: EdgeInsets.all(7),
+                      padding: EdgeInsets.all(7.h),
                       child: Text(
                         'Galley',
                         style: TextStyle(
@@ -303,9 +304,9 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                     }
                   },
                   child: Row(children: [
-                    Icon(Icons.camera),
+                    const Icon(Icons.camera),
                     Padding(
-                      padding: EdgeInsets.all(7),
+                      padding: EdgeInsets.all(7.h),
                       child: Text(
                         'Camera',
                         style: TextStyle(
@@ -318,9 +319,9 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                 SimpleDialogOption(
                   onPressed: () => Get.back(),
                   child: Row(children: [
-                    Icon(Icons.cancel),
+                    const Icon(Icons.cancel),
                     Padding(
-                      padding: EdgeInsets.all(7),
+                      padding: EdgeInsets.all(7.h),
                       child: Text(
                         'Cancel',
                         style: TextStyle(
@@ -407,14 +408,17 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                   : _addTransactionController.transactionType,
               style: TextStyle(
                 fontSize: 14.sp,
-                color: _themeController.color,
+                color: _addTransactionController.transactionType ==
+                        _transactionTypes[1]
+                    ? redClr
+                    : greenClr,
               ),
             ),
             SizedBox(
               width: 40,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton2(
-                  customItemsHeight: 10,
+                  customItemsHeight: 10.h,
                   customButton: Icon(
                     Icons.keyboard_arrow_down,
                     color: _themeController.color,
@@ -434,8 +438,8 @@ class _EditTransactionScreenState extends State<EditTransactionScreen> {
                         .changeTransactionType((val as String));
                   },
                   itemHeight: 30.h,
-                  dropdownPadding: EdgeInsets.all(4),
-                  dropdownWidth: 105.w,
+                  dropdownPadding: const EdgeInsets.all(4),
+                  dropdownWidth: 125.w,
                 ),
               ),
             ),

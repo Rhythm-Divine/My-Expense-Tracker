@@ -100,7 +100,7 @@ class Chart extends StatelessWidget {
               isExpense: isExpense,
               label: data['day'],
               totalAmount: data['amount'],
-              percentage: data['amount'] / totalExpense);
+              percentage: data['amount'] / totalIncome);
         }).toList();
       } else {
         return weekDays

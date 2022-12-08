@@ -20,15 +20,28 @@ class PlaceholderInfo extends StatelessWidget {
                     Image.asset(
                       'assets/Database1.png',
                       filterQuality: FilterQuality.high,
+                      height: 180.h,
                     ),
-                    Text('You have not added an income or expense today!',
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                        )),
-                    Text('Add new incomes or expense to track your money',
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                        ))
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text(
+                      'You have not added an income or expense today!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      'Add new incomes or expense to track your money',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                      ),
+                    ),
                   ],
                 ),
               ),

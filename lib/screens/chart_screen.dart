@@ -10,7 +10,7 @@ import '../backend/controllers/home_controller.dart';
 import '../backend/controllers/theme_controller.dart';
 import '../data/colors.dart';
 import '../widgets/chart.dart';
-import '../widgets/placeholder_info.dart';
+import '../widgets/placeholder.dart';
 import 'add_transaction_screen.dart';
 import 'all_transactions_screen.dart';
 
@@ -18,6 +18,7 @@ class ChartScreen extends StatelessWidget {
   final List<String> _transactionTypes = ['Income', 'Expense'];
   ChartScreen({Key? key}) : super(key: key);
   final ChartController _chartController = Get.put(ChartController());
+
   final _themeController = Get.find<ThemeController>();
   final _homeController = Get.find<HomeController>();
   @override
@@ -68,32 +69,32 @@ class ChartScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                            color: _themeController.color,
                           ),
                         ),
                         trailing: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            SizedBox(
-                              height: 7.h,
-                            ),
+                            // SizedBox(
+                            //   height: 3.h,
+                            // ),
                             Text(
                               _homeController.totalForSelectedDate < 0
                                   ? 'You spent'
                                   : 'You earned',
                               style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
+                                fontSize: 15.sp,
+                                color: _themeController.color,
                               ),
                             ),
                             SizedBox(
                               height: 3.h,
                             ),
                             Text(
-                              '${_homeController.selectedCurrency.symbol}${_homeController.totalForSelectedDate.toStringAsFixed(2)}',
+                              '${_homeController.selectedCurrency.symbol} ${_homeController.totalForSelectedDate.toStringAsFixed(2)}',
                               style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
+                                fontSize: 16.sp,
+                                color: _themeController.color,
                               ),
                             ),
                           ],
@@ -107,7 +108,13 @@ class ChartScreen extends StatelessWidget {
                       margin: EdgeInsets.only(bottom: 10.h),
                       child: GestureDetector(
                         onTap: () => Get.to(() => AllTransactionsScreen()),
-                        child: Text('Show all transactions,'),
+                        child: Text(
+                          'Show all transactions',
+                          style: TextStyle(
+                              color: Colors.deepPurple,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp),
+                        ),
                       ),
                     )
                   : SizedBox(),
@@ -150,14 +157,17 @@ class ChartScreen extends StatelessWidget {
                         : _chartController.transactionType,
                     style: TextStyle(
                       fontSize: 14.sp,
-                      color: _themeController.color,
+                      color: _chartController.transactionType ==
+                              _transactionTypes[1]
+                          ? redClr
+                          : greenClr,
                     ),
                   ),
                   SizedBox(
-                    width: 40,
+                    width: 40.w,
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton2(
-                        customItemsHeight: 10,
+                        customItemsHeight: 10.h,
                         customButton: Icon(
                           Icons.keyboard_arrow_down,
                           color: _themeController.color,
@@ -177,8 +187,8 @@ class ChartScreen extends StatelessWidget {
                               .changeTransactionType((val as String));
                         },
                         itemHeight: 30.h,
-                        dropdownPadding: EdgeInsets.all(4),
-                        dropdownWidth: 105.w,
+                        dropdownPadding: EdgeInsets.all(4.h),
+                        dropdownWidth: 125.w,
                       ),
                     ),
                   ),

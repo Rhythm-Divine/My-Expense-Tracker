@@ -10,7 +10,7 @@ import '../backend/controllers/theme_controller.dart';
 import '../data/colors.dart';
 import '../models/currency.dart';
 import '../widgets/income_expense.dart';
-import '../widgets/placeholder_info.dart';
+import '../widgets/placeholder.dart';
 import 'add_transaction_screen.dart';
 import 'all_transactions_screen.dart';
 import 'chart_screen.dart';
@@ -128,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                               _homeController.totalForSelectedDate < 0
                                   ? 'You spent'
                                   : 'You earned',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 15,
                                 color: Colors.grey,
                               ),
@@ -139,7 +139,7 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               '${_homeController.selectedCurrency.symbol}${_homeController.totalForSelectedDate.toStringAsFixed(2)}',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 color: Colors.grey,
                               ),
                             ),
@@ -147,17 +147,17 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-              PlaceholderInfo(),
+              const PlaceholderInfo(),
               _homeController.myTransactions.isNotEmpty
                   ? Container(
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(bottom: 10.h),
                       child: GestureDetector(
                         onTap: () => Get.to(() => AllTransactionsScreen()),
-                        child: Text('Show all transactions,'),
+                        child: const Text('Show all transactions,'),
                       ),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
         ),
@@ -167,7 +167,7 @@ class HomeScreen extends StatelessWidget {
             await Get.to(() => AddTransactionScreen());
             _homeController.getTransactions();
           },
-          child: Icon(
+          child: const Icon(
             Icons.add,
           ),
         ),
@@ -214,10 +214,10 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 40,
+              width: 40.w,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton2(
-                  customItemsHeight: 10,
+                  customItemsHeight: 10.h,
                   customButton: Icon(
                     Icons.keyboard_arrow_down,
                     color: _themeController.color,
@@ -236,8 +236,8 @@ class HomeScreen extends StatelessWidget {
                     _homeController.updateSelectedCurrency((val as Currency));
                   },
                   itemHeight: 30.h,
-                  dropdownPadding: EdgeInsets.all(4),
-                  dropdownWidth: 105.w,
+                  dropdownPadding: EdgeInsets.all(4.h),
+                  dropdownWidth: 125.w,
                 ),
               ),
             ),

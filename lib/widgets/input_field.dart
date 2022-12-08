@@ -11,7 +11,7 @@ class InputField extends StatelessWidget {
   final bool? isAmount;
   final TextEditingController? controller;
   final Widget? widget;
-  InputField({
+  const InputField({
     Key? key,
     required this.hint,
     required this.label,
@@ -66,7 +66,8 @@ class InputField extends StatelessWidget {
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: hint,
-                        hintStyle: Themes().labelStyle),
+                        hintStyle:
+                            const TextStyle(fontWeight: FontWeight.w300)),
                   ),
                 ),
                 widget == null

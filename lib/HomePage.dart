@@ -57,11 +57,11 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '${_homeController.selectedCurrency.symbol}${_homeController.totalBalance.value.toStringAsFixed(2)}',
+                    '${_homeController.selectedCurrency.symbol} ${_homeController.totalBalance.value.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontSize: 35.sp,
                       fontWeight: FontWeight.w700,
-                      color: Colors.grey,
+                      color: _themeController.color,
                     ),
                   ),
                 ],
@@ -77,9 +77,6 @@ class HomePage extends StatelessWidget {
                     symbol: _homeController.selectedCurrency.symbol,
                     amount: _homeController.totalIncome.value,
                   ),
-                  // SizedBox(
-                  //   width: 30.w,
-                  // ),
                   IncomeExpence(
                     isIncome: false,
                     symbol: _homeController.selectedCurrency.symbol,
@@ -115,49 +112,55 @@ class HomePage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey,
+                            color: _themeController.color,
                           ),
                         ),
                         trailing: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             SizedBox(
-                              height: 7.h,
+                              height: 2.h,
                             ),
                             Text(
                               _homeController.totalForSelectedDate < 0
                                   ? 'You spent'
                                   : 'You earned',
                               style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.grey,
+                                fontSize: 15.sp,
+                                color: _themeController.color,
                               ),
                             ),
                             SizedBox(
                               height: 3.h,
                             ),
                             Text(
-                              '${_homeController.selectedCurrency.symbol}${_homeController.totalForSelectedDate.toStringAsFixed(2)}',
+                              '${_homeController.selectedCurrency.symbol} ${_homeController.totalForSelectedDate.toStringAsFixed(2)}',
                               style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
+                                fontSize: 16.sp,
+                                color: _themeController.color,
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
-              PlaceholderInfo(),
+              const PlaceholderInfo(),
               _homeController.myTransactions.isNotEmpty
                   ? Container(
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(bottom: 10.h),
+                      margin: EdgeInsets.only(bottom: 16.h),
                       child: GestureDetector(
                         onTap: () => Get.to(() => AllTransactionsScreen()),
-                        child: Text('Show all transactions,'),
+                        child: Text(
+                          'Show all transactions',
+                          style: TextStyle(
+                              color: Colors.deepPurple,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp),
+                        ),
                       ),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
         ),
@@ -167,7 +170,7 @@ class HomePage extends StatelessWidget {
             await Get.to(() => AddTransactionScreen());
             _homeController.getTransactions();
           },
-          child: Icon(
+          child: const Icon(
             Icons.add,
           ),
         ),
@@ -214,10 +217,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 40,
+              width: 40.w,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton2(
-                  customItemsHeight: 10,
+                  customItemsHeight: 10.h,
                   customButton: Icon(
                     Icons.keyboard_arrow_down,
                     color: _themeController.color,
@@ -236,8 +239,8 @@ class HomePage extends StatelessWidget {
                     _homeController.updateSelectedCurrency((val as Currency));
                   },
                   itemHeight: 30.h,
-                  dropdownPadding: EdgeInsets.all(4),
-                  dropdownWidth: 105.w,
+                  dropdownPadding: EdgeInsets.all(4.h),
+                  dropdownWidth: 125.w,
                 ),
               ),
             ),

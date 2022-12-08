@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return GetMaterialApp(
-            defaultTransition: Transition.leftToRightWithFade,
-            transitionDuration: Duration(milliseconds: 800),
+            defaultTransition: Transition.downToUp,
+            transitionDuration: const Duration(milliseconds: 500),
             title: 'My Flutter Expense Tracker',
             debugShowCheckedModeBanner: false,
             theme: Themes.lightTheme,

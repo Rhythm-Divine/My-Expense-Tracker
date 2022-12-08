@@ -74,10 +74,10 @@ class AllTransactionsScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 40,
+              width: 40.w,
               child: DropdownButtonHideUnderline(
                 child: DropdownButton2(
-                  customItemsHeight: 10,
+                  customItemsHeight: 10.h,
                   customButton: Icon(
                     Icons.keyboard_arrow_down,
                     color: _themeController.color,
@@ -97,8 +97,8 @@ class AllTransactionsScreen extends StatelessWidget {
                         .changeTransactionType((val as String));
                   },
                   itemHeight: 30.h,
-                  dropdownPadding: EdgeInsets.all(4),
-                  dropdownWidth: 105.w,
+                  dropdownPadding: EdgeInsets.all(4.h),
+                  dropdownWidth: 125.w,
                 ),
               ),
             ),

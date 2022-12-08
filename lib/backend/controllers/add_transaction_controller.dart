@@ -6,7 +6,7 @@ class AddTransactionController extends GetxController {
   final Rx<String> _selectedCategory = Rx<String>('');
   final Rx<String> _selectedMode = Rx<String>('');
   final Rx<String> _selectedTime = ''.obs;
-  // DateFormat('hh:mm a').format(DateTime.now()).obs;
+
   final Rx<String> _selectedImage = Rx<String>('');
 
   String get selectedDate => _selectedDate.value;

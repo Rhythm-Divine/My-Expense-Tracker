@@ -3,9 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../backend/controllers/theme_controller.dart';
 import '../data/colors.dart';
 import '../models/transaction.dart';
+
+final _themeController = Get.find<ThemeController>();
 
 class TransactionTile extends StatelessWidget {
   final TransactionModel transaction;
@@ -44,17 +48,17 @@ class TransactionTile extends StatelessWidget {
         ),
       ),
       subtitle: Text(
-        'Category: ${transaction.category}',
+        'Category : ${transaction.category}',
         style: TextStyle(
-          color: Colors.grey,
-          fontSize: 15,
+          color: _themeController.color,
+          fontSize: 12.sp,
         ),
       ),
       trailing: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           SizedBox(
-            height: 7.h,
+            height: 3.h,
           ),
           Text(
             formatAmount,
@@ -70,8 +74,8 @@ class TransactionTile extends StatelessWidget {
           Text(
             transaction.time!,
             style: TextStyle(
-              fontSize: 15,
-              color: Colors.grey,
+              fontSize: 12.sp,
+              color: _themeController.color,
             ),
           ),
         ],

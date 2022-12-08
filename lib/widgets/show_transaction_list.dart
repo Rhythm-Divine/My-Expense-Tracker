@@ -19,7 +19,7 @@ class ShowTransactions extends StatelessWidget {
         final transaction = _homeController.myTransactions[i];
         final bool isIncome = transaction.type == 'Income' ? true : false;
         final text =
-            '${_homeController.selectedCurrency.symbol}${transaction.amount}';
+            '${_homeController.selectedCurrency.symbol} ${transaction.amount}';
         final formatAmount = isIncome ? '+ $text' : '- $text';
         return transaction.date ==
                 DateFormat.yMd().format(_homeController.selectedDate)
@@ -33,7 +33,7 @@ class ShowTransactions extends StatelessWidget {
                     formatAmount: formatAmount,
                     isIncome: isIncome),
               )
-            : SizedBox();
+            : const SizedBox();
       },
     );
   }
